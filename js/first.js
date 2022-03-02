@@ -61,3 +61,41 @@ const displaySearchResult = data => {
 
 
 }
+
+
+
+const items = (data) => {
+    const searchResult = document.getElementById('search-result');
+    const div = document.createElement('div');
+    div.classList.add('col')
+    div.innerHTML = `
+   
+<div class="col">
+<div class="card h-100 rounded shadow">
+<img src="${data.image}" class="card-img-top w-75  mt-5 mx-auto" alt="...">
+<div class="card-body">
+<h5 class="card-title">${data.phone_name}</h5>
+<p class="card-text">${data.brand}</p>
+<a href="#" onclick ="loadPhoneDetail('${data.slug}')" class="btn btn-primary px-5">Details</a>
+</div>
+</div>
+</div>
+  
+`;
+    searchResult.appendChild(div);
+
+
+
+}
+
+
+const loadPhoneDetail = id => {
+
+
+    fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
+        .then(res => res.json())
+        .then(data => {
+            displayPhoneDetail(data.data)
+            // console.log(data)
+        });
+}
