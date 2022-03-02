@@ -99,3 +99,47 @@ const loadPhoneDetail = id => {
             // console.log(data)
         });
 }
+
+
+
+const displayPhoneDetail = data => {
+    const detailsErrorHandaling = (dataValue) => {
+        if (dataValue == null || dataValue == undefined || dataValue == '') {
+            return 'no data found'
+        } else {
+            return dataValue
+        }
+    }
+    console.log(data);
+
+    const phoneDetails = document.getElementById('data-details');
+    phoneDetails.textContent = '';
+    const div = document.createElement('div');
+    div.classList.add('card');
+    div.innerHTML = `
+    <div class="d-flex">
+            <div class="w-25 mx-auto"><img class="m-5 w-100" src="${data.image}" alt=""></div>
+            <div class="w-50 mx-auto ms-5">
+                <p><b>name:</b> <span class="ms-2">${data.name}</span></p>
+                <p><b>brand:</b> <span class="ms-2">${data.brand}</span></p>
+                <p><b>releaseDate:</b> <span class="ms-2">${detailsErrorHandaling(data.releaseDate)}</span></p>
+                <p><b>chipSet:</b> <span class="ms-2">${detailsErrorHandaling(data.mainFeatures.chipSet)}</span></p>
+                <p><b>displaySize:</b> <span class="ms-2">${data.mainFeatures.displaySize}</span></p>
+                <p><b>memory:</b> <span class="ms-2">${data.mainFeatures.memory}</span></p>
+                <p><b>sensors:</b> <span class="ms-2">${data.mainFeatures.sensors}</span></p>
+                <p><b>storage:</b> <span class="ms-2">${data.mainFeatures.storage}</span></p>
+
+                <div>
+                    <h4>Others</h4>
+                    <div class="ms-4">
+                        <p><b>Bluetooth:</b> <span class="ms-2">${data.others.Bluetooth}</span></p>
+                        <p><b>GPS:</b> <span class="ms-2">${data.others.GPS}</span></p>
+                        <p><b>USB:</b> <span class="ms-2">${data.others.USB}</span></p>
+                        <p><b>Radio:</b> <span class="ms-2">${data.others.Radio}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    phoneDetails.appendChild(div);
+}
