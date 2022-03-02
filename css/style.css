@@ -33,3 +33,30 @@
     max-width: 100%;
     height: auto;
 }
+
+
+
+
+
+@media (min-width: 768px){
+    .row-cols-md-3>* {
+        flex: 0 0 auto;
+        width: 33.3333333333%;
+        
+    }
+    
+}
+@media (max-width: 575.98px) { 
+    .input-group{
+        width: 80% !important;
+    }
+
+    .mx-auto {
+        /* margin-right: !important; */
+        margin-left: 35px !important;
+    }
+ }
+
+.search-bar{
+    min-width: 250px;
+}
